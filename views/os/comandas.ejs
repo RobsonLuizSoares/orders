@@ -1,0 +1,18 @@
+<% include ../partials/header %>
+
+<h1> Consultar Comandas VIEW Comandas</h1>
+<a href='/os/nova'><button type='button' class='btn btn-success'> Cadastrar </button></a>
+
+<ul>
+    <% order.forEach( os => { %> 
+    <hr />
+    <li><%= os.client %></li>
+    <li><%= os.number %></li>
+    <li><%= os.status %></li>
+    <a href='/os/editar/<%= os._id %>'>Editar</a>
+    <a href='/os/excluir/<%= os._id %>'>Excluir</a>
+    
+    <% }) %>
+</ul>
+
+<% include ../partials/footer %>

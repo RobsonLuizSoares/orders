@@ -1,0 +1,25 @@
+{
+  "name": "comandas",
+  "version": "1.0.0",
+  "description": "Sistema de Gerenciamento de Comandas e Caixas",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test2": "./node_modules/.bin/mocha **/*.test.js --reporter spec"
+  },
+  "author": "Robson Luiz Soares da Conceição",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mongodb": "^3.2.4",
+    "mongoose": "^5.5.7"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "sinon": "^7.3.2"
+  }
+}

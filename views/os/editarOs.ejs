@@ -1,0 +1,26 @@
+<% include ../partials/header %>
+
+<h1> Editar Comandas VIEW editOS </h1>
+<a href='/os/list'><button type='button' class='btn btn-success'> Voltar </button></a>
+<div class='container'>
+    <form method='post'>
+        <div class='form-group' >
+            <label for="client">Cliente</label>
+            <input value="<%= order.client %>" type='text'  class='form-control' name='client'   >
+            <label for="number">Número</label>
+            <input value="<%= order.number %>" class='form-control' type='text' name='number'  >
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select  class="form-control" id="status" name='status'>
+                <% labels.forEach( label => { %>
+                    <option value="<%= label.id%>"  <% if(label.id === order.status) { %> selected ='selected' <% } %> > <%= label.name %> </option>
+                <% }) %>
+                </select>
+            </div>
+
+            <button class='btn btn-primary'> Salvar </button>
+        </div> 
+    </form>
+</div>
+
+<% include ../partials/footer %>

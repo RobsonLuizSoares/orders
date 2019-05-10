@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="/public/style.css" >   
+    <title>Gerenciamento Net Link</title>
+</head>
+
+<body>
+<nav class="navbar navega navbar-expand-lg " style=" background-color: #d63031; padding-left: 55px;">
+    <a class="navbar-brand text-white brandNet" href="/">Net Link</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon text-white mr-3" style="font-size: 0.8em">Menu</span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link text-white" href="/">Caixas <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="/">Comandas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="/admin">Admin</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Comandas
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item text-body" href="/os/list">Consultar</a>
+            <a class="dropdown-item text-body" href="/os/nova">Nova Comanda</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item text-body" href="/admin">Administração</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+</nav>

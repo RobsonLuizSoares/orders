@@ -1,0 +1,26 @@
+<% include ../partials/header %>
+
+<h1> Criar Comandas VIEW NOVA </h1>
+<a href='/os/list'><button type='button' class='btn btn-success'> Voltar </button></a>
+<div class='container'>
+    <form method='post' action='' >
+        <div class='form-group' >
+            <label for="client">Cliente</label>
+            <input class='form-control' type='text' id='client' name='client'>
+            <label for="number">Número</label>
+            <input class='form-control' type='text' id='number' name='number'>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select  class="form-control" id="status" name='status'>
+                    <option value='aberta'>Aberta</option>
+                    <option value='executando'>Executando</option>
+                    <option value='fechada'>Fechada</option>
+                </select>
+            </div>
+
+            <button class='btn btn-primary'> Salvar </button>
+        </div> 
+    </form>
+</div>
+
+<% include ../partials/footer %>
