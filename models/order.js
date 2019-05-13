@@ -1,22 +1,28 @@
 const mongoose = require('mongoose')
-const db = require('../config/db')
+const AutoIncrement = require('mongoose-sequence')(mongoose)
+
+
 
 const OrderSchema = mongoose.Schema({
     client: {
         type: String,
     },
     number: {
-        type: Number
+        type: Number,
+        
     }, 
     status: {
         type: String,
         enumValues: [ 'aberta', 'executando','fechada']
     },
-    products: {
-        type: String,
-    }
+    comments:  {
+        type: [String]
+    }   
 })
+OrderSchema.plugin(AutoIncrement, {id: 'order_seq', inc_field: 'number', collection_name: 'numOs'})
 
 const Order = mongoose.model('Order', OrderSchema)
+
+
 
 module.exports = Order

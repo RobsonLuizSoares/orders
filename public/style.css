@@ -1,17 +1,31 @@
 body{
     margin: 0;
     padding: 0;
-    background: #dfe6e9;
+    background: #e0e0e0;
 }
 .navega{
-    min-height:80px;
-    font-size: 1.3em;
+    min-height:60px;
+    font-size: 1.2em;
+    color: #fff; 
+    box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.3);
+       
+}
+.navega a{
+    margin-right: 1em;
+    color: #fff;
+}
+.navega a:hover{
+    color: yellow; 
+    transition: 0.4s;
 }
 .brandNet{
     font-size: 1.6em;
     margin-right: 2em;
+    color: #fff;    
 }
-
+.formNova{
+    box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.3);
+}
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (max-width: 576px) { 
@@ -46,3 +60,79 @@ body{
         color: rgb(37, 6, 175);
     }
  }
+/* LOGIN */
+ .box{
+    width: 400px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #191919;
+    text-align: center;
+    
+}
+.box h1 {
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.box input[type = 'text']  {
+    border: 0;
+    background: none;
+    display: block;
+    height: 40px;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    width: 200px;
+    outline: none;
+    border-radius: 25px;
+    transition: 0.25s;
+    color: white;
+    font-weight: 500;
+}
+.box input[type = 'password'] {
+    border: 0;
+    background: none;
+    display: block;
+    height: 40px;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    width: 200px;
+    outline: none;
+    border-radius: 18px;
+    transition: 0.25s;
+    color: white;
+    font-weight: 500;
+}
+.box input[type = 'text']:focus, .box input[type = 'password']:focus {
+width: 280px;
+border-color: #2ecc71;
+}
+.btnLogin {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #2ecc71;
+    padding:  14px 80 px;
+    outline: none;
+    color: white;
+    width: 150px;
+    border-radius: 18px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+.btnLogin:hover {
+    background: #f30d0d;
+    color:white;
+}
+#confirmBtn {
+display: none;
+}
+#createClientBtn {
+    display: none;
+}

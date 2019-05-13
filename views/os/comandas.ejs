@@ -1,18 +1,65 @@
 <% include ../partials/header %>
 
-<h1> Consultar Comandas VIEW Comandas</h1>
-<a href='/os/nova'><button type='button' class='btn btn-success'> Cadastrar </button></a>
+<div class='container text-center mt-5'>
+    <h1> Consultar Comandas </h1>
+</div>
+<div class='container my-2'>
+    <a href='/os/nova'><button type='button' class='btn btn-primary' style='width: 7rem;'> Cadastrar</button></a>
+</div>
 
-<ul>
-    <% order.forEach( os => { %> 
-    <hr />
-    <li><%= os.client %></li>
-    <li><%= os.number %></li>
-    <li><%= os.status %></li>
-    <a href='/os/editar/<%= os._id %>'>Editar</a>
-    <a href='/os/excluir/<%= os._id %>'>Excluir</a>
-    
-    <% }) %>
-</ul>
+<% order.forEach( os => { %> 
+    <div class="container">
+    <div class='acordion mb-3' id='acordionOs' >
+        <div class="card mx-auto" style="max-width: 35rem;">
+                <div class="card-header " id="headingOne">
+                   <h2 class="mb-0  "></h2>
+                        <button class="btn btn-link text-decoration-none" style="width:100%" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <div class="row">
+                                <div class="col-md-8 col-xs-6 text-body" >
+                                    <h5>Cliente: <%= os.client %></h5>
+                                </div>
+                                <div class="pl-3 col-xs-2 col-md-4 text-body ">
+                                    <h6 > Comanda n.: <%= os.number %> </h6>
+                                </div>
+                            </div>
+                          
+                        </button>
+                    </h2>
+                </div>
+                <div id='collapseOne' class='collapse show' aria-labelledby="#headingOne" data-parent='#acordionOs'>
+                    <div class='card-body'>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Comanda n.: <%= os.number %> </li> 
+                            <li class="list-group-item">Status: <%= os.status %></li>
+                        </ul>
+                         
+                        <div class="  " >
+                            <div class="alert alert-success">
+                                <h6>Comentários:</h6>
+                            </div>
+                            <% os.comments.map( c => { %>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><%= c %> </li>
+                        </ul>
+                            <% }) %>
+                        </div>                          
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <a href='/os/editar/<%= os._id %>'><button type="button" class="btn btn-primary btn-sm">Editar</button></a>
+                                    <a href='/os/excluir/<%= os._id %>'><button type="button" class="btn btn-secondary btn-sm"> Excluir</button></a>
+                                    <a href='/os/info/<%= os._id %>'><button type="button" class="btn btn-success btn-sm">Novo Comentário</button>  </a>
+                                </li>
+                            </ul>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+
+<% }) %>
+   
+
+
 
 <% include ../partials/footer %>
