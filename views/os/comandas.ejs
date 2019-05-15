@@ -3,63 +3,102 @@
 <div class='container text-center mt-5'>
     <h1> Consultar Comandas </h1>
 </div>
-<div class='container my-2'>
-    <a href='/os/nova'><button type='button' class='btn btn-primary' style='width: 7rem;'> Cadastrar</button></a>
+<div class='container text-center my-3'>
+    <a href='/os/nova'><button type='button' class='btn btn-outline-primary btn-sm ' style='width: 12rem;'> Cadastrar Nova Comanda</button></a>
 </div>
 
 <% order.forEach( os => { %> 
-    <div class="container">
-    <div class='acordion mb-3' id='acordionOs' >
-        <div class="card mx-auto" style="max-width: 35rem;">
-                <div class="card-header " id="headingOne">
-                   <h2 class="mb-0  "></h2>
-                        <button class="btn btn-link text-decoration-none" style="width:100%" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            <div class="row">
-                                <div class="col-md-8 col-xs-6 text-body" >
-                                    <h5>Cliente: <%= os.client %></h5>
-                                </div>
-                                <div class="pl-3 col-xs-2 col-md-4 text-body ">
-                                    <h6 > Comanda n.: <%= os.number %> </h6>
-                                </div>
-                            </div>
-                          
-                        </button>
-                    </h2>
-                </div>
-                <div id='collapseOne' class='collapse show' aria-labelledby="#headingOne" data-parent='#acordionOs'>
-                    <div class='card-body'>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Comanda n.: <%= os.number %> </li> 
-                            <li class="list-group-item">Status: <%= os.status %></li>
-                        </ul>
-                         
-                        <div class="  " >
-                            <div class="alert alert-success">
-                                <h6>Comentários:</h6>
-                            </div>
-                            <% os.comments.map( c => { %>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><%= c %> </li>
-                        </ul>
-                            <% }) %>
-                        </div>                          
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                    <a href='/os/editar/<%= os._id %>'><button type="button" class="btn btn-primary btn-sm">Editar</button></a>
-                                    <a href='/os/excluir/<%= os._id %>'><button type="button" class="btn btn-secondary btn-sm"> Excluir</button></a>
-                                    <a href='/os/info/<%= os._id %>'><button type="button" class="btn btn-success btn-sm">Novo Comentário</button>  </a>
-                                </li>
-                            </ul>
-                    </div>
-                    </div>
+    <div class="container mb-5">
+        <div class="card mx-auto" style="max-width: 55rem;">
+            <div class="card-header">
+                <div>
+                    <h5 class="text-center">Comanda de Serviços Net Link</h5> 
                 </div>
             </div>
+            <div class='card-body '>
+                <div class="row">
+                    <div class="col-md-5">
+                        <span class="font-weight-normal ">Cliente: <%= os.client %></span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="font-weight-normal ">Telefone: <%= os.phone %></span>
+                    </div>
+                    <div class="col-md-2 ">
+                        <span class="font-weight-bold" style="font-size: 1.1em;" >Comanda: <%= os.number %></span> 
+                    </div>
+                 </div> 
+                 <hr />
+                <div class="row">
+                    <div class="col-md-3">
+                        <span class="font-weight-normal">Cópias: <%= os.copy %></span>
+                    </div>
+                    <div class="col-md-2">
+                        <span class="font-weight-normal">Quantidade: <%= os.copyQ %></span>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="font-weight-normal" >Folhas: <%= os.sheets %></span> 
+                    </div>
+                    <div class="col-md-3">
+                        <span class="font-weight-normal">Tamanho: <%= os.size %></span>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md-8">
+                        <span class="font-weight-normal">Outros Serviços: <%= os.otherServices %></span>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="font-weight-normal" >Cor: <%= os.color %></span> 
+                    </div>
+                </div>
+                <hr />    
+                 <div class="row" >
+                    <h6 class="mx-auto">Descrição do Serviço:</h6>        
+                </div>           
+                <div class="row border my-2">
+                    <% os.comments.map( c => { %>
+                    <ul class="list-group list-group-flush   ">
+                        <li class="list-group-item "><%= c %> </li>
+                    </ul>
+                    <% }) %>
+                </div>
+                <div class="row ">
+                    <div class="col-md-5">
+                        <span class="font-weight-normal " >Registrada em: <%= moment(os.register).format("DD [/] MM [/] YYYY") %></span> 
+                    </div>
+                    <div class="col-md-5">
+                        <span class="font-weight-normal " >Entrega: <%= moment(os.delivery).format("DD [/] MM [/] YYYY") %></span> 
+                    </div> 
+                    <div class="col-md-2 ">
+                        <span class="font-weight-normal">Guichê: <%= os.box %></span>
+                    </div> 
+                </div>
+                <hr />
+                <div class="row alert alert-info">
+                    <div class="col-md-2">
+                        <span class="font-weight-normal">Total: <%= os.valueJobTotal %></span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="font-weight-normal">Entrada: <%= os.valueJobInit %></span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="font-weight-normal">Pagamento: <%= os.isSold %></span>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="font-weight-normal ">Status:<strong> <%= os.status %></strong></span>
+                    </div>
+                </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href='/os/editar/<%= os._id %>'><button type="button" class="btn btn-primary btn-sm mx-2">Editar</button></a>
+                            <a href='/os/excluir/<%= os._id %>'><button type="button" class="btn btn-outline-secondary btn-sm mx-2"> Excluir</button></a>
+                            <a href='/os/info/<%= os._id %>'><button type="button" class="btn btn-success btn-sm mx-2">Novo Comentário</button>  </a>
+                        </li>
+                    </ul>
+            </div>
+                    
         </div>
-   
-
+    </div>
 <% }) %>
-   
-
-
 
 <% include ../partials/footer %>
