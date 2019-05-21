@@ -1,102 +1,109 @@
 <% include ../partials/header %>
 
-<div class='container text-center mt-5'>
+<div class='container text-center namePage'>
     <h1> Consultar Comandas </h1>
 </div>
-<div class='container text-center my-3'>
+<div class='container text-center my-4'>
     <a href='/os/nova'><button type='button' class='btn btn-outline-primary btn-sm ' style='width: 12rem;'> Cadastrar Nova Comanda</button></a>
 </div>
+<% if(order.length == 0) { %>
+    <% include ../partials/errorMsg %>
+<% } %>
 
 <% order.forEach( os => { %> 
-    <div class="container mb-5">
-        <div class="card mx-auto" style="max-width: 55rem;">
-            <div class="card-header">
+    <div class="container comanda ">
+        <div class="card mx-auto">
+            <div class="card-header cardHeader formNova">
                 <div>
                     <h5 class="text-center">Comanda de Serviços Net Link</h5> 
                 </div>
             </div>
-            <div class='card-body '>
-                <div class="row">
-                    <div class="col-md-5">
-                        <span class="font-weight-normal ">Cliente: <%= os.client %></span>
+            <div class='card-body cardBody formNova '>
+            <div class='card cardContent'>
+                <div class="row mt-3 ">
+                    <div class="col-md-6 field">
+                        <span class="font-weight-normal ">Cliente:&nbsp; <%= os.client %></span>
                     </div>
-                    <div class="col-md-3">
-                        <span class="font-weight-normal ">Telefone: <%= os.phone %></span>
+                    <div class="col-md-3 field">
+                        <span class="font-weight-normal ">Telefone:&nbsp; <%= os.phone %></span>
                     </div>
-                    <div class="col-md-2 ">
-                        <span class="font-weight-bold" style="font-size: 1.1em;" >Comanda: <%= os.number %></span> 
+                    <div class="col-md-2 field">
+                        <span class="font-weight-bold" style="font-size: 1.1em;" >Comanda n.:&nbsp; <%= os.number %></span> 
                     </div>
                  </div> 
-                 <hr />
+                 <br />
                 <div class="row">
-                    <div class="col-md-3">
-                        <span class="font-weight-normal">Cópias: <%= os.copy %></span>
+                    <div class="col-md-3 field">
+                        <span class="font-weight-normal">Cópias:&nbsp; <%= os.copy %></span>
                     </div>
-                    <div class="col-md-2">
-                        <span class="font-weight-normal">Quantidade: <%= os.copyQ %></span>
+                    <div class="col-md-2 field">
+                        <span class="font-weight-normal ">Quantidade:&nbsp; <%= os.copyQ %></span>
                     </div>
-                    <div class="col-md-4">
-                        <span class="font-weight-normal" >Folhas: <%= os.sheets %></span> 
+                    <div class="col-md-3 field">
+                        <span class="font-weight-normal" >Folhas:&nbsp; <%= os.sheets %></span> 
                     </div>
-                    <div class="col-md-3">
-                        <span class="font-weight-normal">Tamanho: <%= os.size %></span>
+                    <div class="col-md-2 field">
+                        <span class="font-weight-normal">Tamanho:&nbsp; <%= os.size %></span>
                     </div>
                 </div>
                 <hr />
+                <% if(os.otherServices === '') { %> 
+                  
+                  
                 <div class="row">
-                    <div class="col-md-8">
-                        <span class="font-weight-normal">Outros Serviços: <%= os.otherServices %></span>
+                    <div class="col-md-7 field">
+                        <span class="font-weight-normal">Outros Serviços:&nbsp; <%= os.otherServices %></span>
                     </div>
-                    <div class="col-md-4">
-                        <span class="font-weight-normal" >Cor: <%= os.color %></span> 
+                    <div class="col-md-4 field">
+                        <span class="font-weight-normal" >Cor:&nbsp; <%= os.color %></span> 
                     </div>
                 </div>
-                <hr />    
+                <hr /> 
+                <% } %>   
                  <div class="row" >
                     <h6 class="mx-auto">Descrição do Serviço:</h6>        
                 </div>           
-                <div class="row border my-2">
-                    <% os.comments.map( c => { %>
-                    <ul class="list-group list-group-flush   ">
-                        <li class="list-group-item "><%= c %> </li>
-                    </ul>
-                    <% }) %>
-                </div>
-                <div class="row ">
-                    <div class="col-md-5">
-                        <span class="font-weight-normal " >Registrada em: <%= moment(os.register).format("DD [/] MM [/] YYYY") %></span> 
+                <div class="row">
+                    <div class= ' fieldComments'>
+                        <span class="font-weight-normal">Tamanho:&nbsp; <%= os.comments %></span>
                     </div>
-                    <div class="col-md-5">
-                        <span class="font-weight-normal " >Entrega: <%= moment(os.delivery).format("DD [/] MM [/] YYYY") %></span> 
+                </div>
+                <hr />
+                <div class="row ">
+                    <% if(os.delivery) { %> 
+                    <div class="col-md-4 fieldDate">
+                        <span class="font-weight-normal " >Comanda fechada em:&nbsp; <%= moment(os.delivery).add(1,'days').format("DD [/] MM [/] YYYY") %></span>
                     </div> 
-                    <div class="col-md-2 ">
-                        <span class="font-weight-normal">Guichê: <%= os.box %></span>
+                    <% } %>
+                    <div class="col-md-4 fieldDate">
+                        <span class="font-weight-normal " >Registrada em: <%= moment(os.register).format("DD [/] MM [/] YYYY") %>&nbsp; por: <%= locals.user.username %></span> 
+                    </div>
+                    
+                    <div class="col-md-3 fieldBox">
+                        <span class="font-weight-normal">Guichê:&nbsp; <%= os.box %></span>
                     </div> 
                 </div>
                 <hr />
-                <div class="row alert alert-info">
-                    <div class="col-md-2">
-                        <span class="font-weight-normal">Total: <%= os.valueJobTotal %></span>
+                <div class="row">
+                    <div class="col-md-2 fieldCash">
+                        <span class="font-weight-normal">Total:&nbsp; R$ <%= os.valueJobTotal %></span>
                     </div>
-                    <div class="col-md-3">
-                        <span class="font-weight-normal">Entrada: <%= os.valueJobInit %></span>
+                    <div class="col-md-3 fieldCash">
+                        <span class="font-weight-normal">Entrada:&nbsp; R$ <%= os.valueJobInit %></span>
                     </div>
-                    <div class="col-md-3">
-                        <span class="font-weight-normal">Pagamento: <%= os.isSold %></span>
+                    <div class="col-md-3 fieldCash">
+                        <span class="font-weight-normal">Pagamento:&nbsp; <%= os.isSold %></span>
                     </div>
-                    <div class="col-md-4">
-                        <span class="font-weight-normal ">Status:<strong> <%= os.status %></strong></span>
+                    <div class="col-md-3 fieldStatus">
+                        <span class="font-weight-normal ">Status:&nbsp;&nbsp;<strong> <%= os.status %></strong></span>
                     </div>
                 </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <a href='/os/editar/<%= os._id %>'><button type="button" class="btn btn-primary btn-sm mx-2">Editar</button></a>
-                            <a href='/os/excluir/<%= os._id %>'><button type="button" class="btn btn-outline-secondary btn-sm mx-2"> Excluir</button></a>
-                            <a href='/os/info/<%= os._id %>'><button type="button" class="btn btn-success btn-sm mx-2">Novo Comentário</button>  </a>
-                        </li>
-                    </ul>
+                <div class= 'btns mx-auto'> 
+                    <a href='/os/editar/<%= os._id %>'><button type="button" class="btn btnComanda btn-primary btn-sm mr-2">Editar</button></a>
+                    <a href='/os/excluir/<%= os._id %>'><button type="button" class="btn btnComanda btn-secondary btn-sm "> Excluir</button></a>
+                </div>
             </div>
-                    
+            </div>            
         </div>
     </div>
 <% }) %>

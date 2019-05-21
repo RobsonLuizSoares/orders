@@ -1,5 +1,6 @@
 
 const moment = require('moment')
+moment.locale('pt-br')
 
 const labels = [ 
   { id: 'aberta', name: 'aberta' }, 
@@ -7,15 +8,39 @@ const labels = [
   { id: 'fechada', name: 'fechada' }
 ]
 
-const services = [
+const copies = [
   { id: 'Colorida Jato', name: 'Colorida Jato' },
   { id: 'Colorida Laser', name: 'Colorida Laser' },
   { id: 'Preto e Branco', name: 'Preto e Branco' }
 ]
+const sheets = [
+  { id: 'Frente', name: 'Frente' },
+  { id: 'Frente e Verso', name: 'Frente e Verso' },
+]
+const services = [
+  { id: 'Encadernar', name: 'Encadernar' },
+  { id: 'Plastificar', name: 'Plastificar' },
+  { id: 'Outro Serviço', name: 'Outro Serviço' }
+]
+const sizes = [
+  { id: 'Normal', name: 'Normal' },
+  { id: 'Reduzido', name: 'Reduzido' },
+  { id: 'Ampliado', name: 'Ampliado' }
+]
+const colors = [
+  { id: 'Incolor', name: 'Incolor' },
+  { id: 'Fumê', name: 'Fumê' },
+  { id: 'Preto', name: 'Preto' }
+]
+const solds = [
+  { id: 'Tudo Pago!', name: 'Tudo Pago!' },
+  { id: 'Parcial', name: 'Parcial' },
+  { id: 'Não Pago', name: 'Não Pago' }
+]
 
 const list = async ({ Order }, req, res) => {
   const order = await Order.find({}).sort({number: -1})
-      res.render('os/comandas', {order, labels, services, moment })
+      res.render('os/comandas', {order, labels, services, copies, sheets, sizes, colors, solds, moment })
 }
 
 const createOs = async ({ Order }, req, res ) => {
@@ -43,7 +68,7 @@ const editOs = async ({ Order }, req, res) => {
     socialMedia: req.body.socialMedia,
     copy: req.body.copy,
     copyQ: req.body.copyQ,
-    sheets: req.body.sheets,
+    sheets: req.body.sheets, sizes,
     size: req.body.size,
     otherServices: req.body.otherServices,
     color: req.body.color,
@@ -80,7 +105,7 @@ const editOs = async ({ Order }, req, res) => {
 
 const editFormOs = async ({ Order }, req, res) => {
   const order = await Order.findOne({ _id: req.params.id })
-     res.render('os/editarOs', { order, labels, services, moment } )  
+     res.render('os/editarOs', { order, labels, services, copies, sheets, sizes, colors, solds, moment } )  
 }
 
 const info = async ({ Order }, req, res ) => {
@@ -95,17 +120,17 @@ const addComentario = async ({Order}, req, res) => {
 
 const searchOsF = async ({ Order }, req, res) => {
   const order = await Order.find({ status: { $all: 'fechada'} })
-    res.render('os/osAbertas', { order, labels, services, moment})
+    res.render('os/comandas', { order, labels, services, copies, sheets, sizes, colors, solds, moment})
 }
 
 const searchOsA = async ({ Order }, req, res) => {
   const order = await Order.find({ status: { $all: 'aberta'} })
-    res.render('os/osAbertas', { order, labels, services, moment})
+    res.render('os/comandas', { order, labels, services, copies, sheets, sizes, colors, solds, moment})
 }
 
 const searchOsE = async ({ Order }, req, res) => {
   const order = await Order.find({ status: { $all: 'executando'} })
-    res.render('os/osAbertas', { order, labels, services, moment})
+    res.render('os/comandas', { order, labels, services, copies, sheets, sizes, colors, solds, moment})
 }
 
 module.exports = {

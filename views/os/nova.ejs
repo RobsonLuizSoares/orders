@@ -1,6 +1,6 @@
 <% include ../partials/headerComandas %>
 
-<div class='container text-center my-5'>
+<div class='container text-center namePage'>
     <h1> Abrir Nova Comanda</h1>
 </div>
 <div class='container my-3' >
@@ -8,31 +8,34 @@
 </div>
 
 <div class='container' style="margin-bottom: 125px">
-    <div class='card formNova'>
-        <div class='card-body'>
-                <form method='post' action='' >
-                    <div class='form-group' >
+    <div class='card formNova my-4 '>
+        <div class="card-header  cardHeader">
+            <div>
+                <h5 class="text-center">Comanda de Serviços Net Link</h5> 
+            </div>
+        </div>
+        <div class='card-body cardBody'>
+            <div class='card CardContent my-3 px-3'>
+                <form class='py-3' method='post' action='' >
+                    <div class='form-group ' >
                         <div class="row ">
                             <div class="form-group col-md-5">
-                                <label for="client">Cliente</label>
-                                <input class='form-control' type='text' id='client' name='client'>
+                                <label for="client">Cliente:</label>
+                                <input class='form-control fieldNew' type='text' id='client' name='client'>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="fone">Telefone</label>
-                                <input type="text" class="form-control" id="phone" name='phone' placeholder="digite o telefone do cliente">
+                                <label for="fone">Telefone:</label>
+                                <input type="text" class="form-control fieldNew" id="phone" name='phone' >
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="emailClient">E-mail / Rede Social</label>
-                                <input type="email" class="form-control" id="socialMedia" name='socialMedia' placeholder="digite o e-mail do cliente">
+                                <label for="emailClient">E-mail / Rede Social:</label>
+                                <input type="email" class="form-control fieldNew" id="socialMedia" name='socialMedia' >
                             </div>
                         </div>                        
-                                
-                                <hr />
-
                                 <div class="row ">
                                     <div class="form-group col-md-2">
                                         <label for="fone">Cópia:</label>
-                                        <select type="text" class="form-control" id="copy" name='copy' >
+                                        <select type="text" class="form-control fieldNew" id="copy" name='copy' >
                                             <option></option>
                                             <option>Colorida Jato</option>
                                             <option>Colorida Laser</option>
@@ -41,19 +44,19 @@
                                     </div>
                                     <div class="form-group col-md-1">
                                         <label for="quant">Quant:</label>
-                                        <input type="text" class="form-control" id="copyQ" name='copyQ' >
+                                        <input type="text" class="form-control fieldNew" id="copyQ" name='copyQ' >
                                                     
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label for="fone">Folhas:</label>
-                                        <select type="text" class="form-control" id="sheets" name='sheets' >
+                                        <select type="text" class="form-control fieldNew" id="sheets" name='sheets' >
                                             <option>Frente</option>
                                             <option>Frente e Verso</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label for="fone">Tamanho:</label>
-                                        <select type="text" class="form-control" id="size" name='size' placeholder="digite o telefone do cliente">
+                                        <select type="text" class="form-control fieldNew" id="size" name='size' placeholder="digite o telefone do cliente">
                                             <option>Normal</option>
                                             <option>Reduzido</option>
                                             <option>Ampliado</option>
@@ -61,7 +64,7 @@
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="fone">Outros Serviços</label>
-                                        <select type="text" class="form-control" id="otherServices" name='otherServices' placeholder="digite o telefone do cliente">
+                                        <select type="text" class="form-control fieldNew" id="otherServices" name='otherServices' placeholder="digite o telefone do cliente">
                                             <option></option>
                                             <option>Encadernar</option>
                                             <option>Plastificar</option>
@@ -70,15 +73,11 @@
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label for="fone">Cor:</label>
-                                        <select type="text" class="form-control" id="color" name='color' placeholder="digite o telefone do cliente">
+                                        <select type="text" class="form-control fieldNew" id="color" name='color' placeholder="digite o telefone do cliente">
                                             <option></option>
                                             <option>Incolor</option>
-                                            <option>Cinza</option>
-                                            <option>Azul</option>
-                                            <option>Vermelho</option>
-                                            <option>Amarelo</option>
-                                            <option>Listrado</option>
-                                            <option>Bolinhas</option>
+                                            <option>Fumê</option>
+                                            <option>Preto</option>
                                         </select>
                                     </div>
                                 </div>
@@ -86,20 +85,20 @@
                           
                                 <hr/>
                                 <div class="row ">
-                                    <div class="col-md-9"> 
-                                        <label class='mb-2' for="comentário">Descrição:</label>
-                                        <textarea class='form-control ' name='comments' rows="2" cols=""> </textarea>
+                                    <div class="col-md-9 text-center"> 
+                                        <label class='mb-2 ' for="comentário">Descrição do Serviço:</label>
+                                        <textarea class='form-control fieldNew' name='comments' rows="2" cols=""> </textarea>
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="dateNow">Data de Entrega:</label>
-                                        <input type="date" class="form-control " id="delivery" name='delivery' >
+                                        <label for="datenow">Data de Entrega:</label>
+                                       <input class="form-control fieldNew" type="date" id="delivery" name='delivery' >
                                     </div>
                                 </div>
                                 <hr />
                                 <div class="row mt-3">
                                     <div class="form-group col-md-3 ">
                                         <label class='mr-auto mb-2' for="status">Status</label>
-                                        <select class="form-control" id='status' name='status'>
+                                        <select class="form-control payment" id='status' name='status'>
                                             <option value='aberta'>Aberta</option>
                                             <option value='executando'>Executando</option>
                                             <option value='fechada'>Fechada</option>
@@ -107,25 +106,25 @@
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label for="client">Valor Total:</label>
-                                        <input type="text" class="form-control " id="valueJobTotal" name='valueJobTotal' placeholder="valor total do serviço">
+                                        <input type="text" class="form-control fieldNew" id="valueJobTotal" name='valueJobTotal'>
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label for="dateNow">Valor Entrada:</label>
-                                        <input type="text" class="form-control " id="valueJobInit" name='valueJobInit' placeholder="valor de entrada" >
+                                        <input type="text" class="form-control fieldNew" id="valueJobInit" name='valueJobInit'>
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label for="fone">Pagamento:</label>
-                                            <select type="text" class="form-control" id="isSold" name='isSold' placeholder="digite o telefone do cliente">
-                                                <option>...</option>
+                                            <select type="text" class="form-control fieldNew" id="isSold" name='isSold' placeholder="digite o telefone do cliente">
+                                                <option></option>
                                                 <option>Tudo Pago!</option>
                                                 <option>Parcial</option>
                                                 <option>Não Pago</option>
                                             </select>
                                     </div>
                                     <div class="col-md-3  ">
-                                        <h5> Guichê: </h5>
-                                        <select type="text" class="form-control my-1" id="box" name='box' placeholder="digite o telefone do cliente">
-                                            <option>...</option>
+                                        <h5 class='ml-3'> Guichê: </h5>
+                                        <select type="text" class="form-control my-1 fieldNew" id="box" name='box' placeholder="digite o telefone do cliente">
+                                            <option></option>
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -136,29 +135,55 @@
                                             <option>8</option>
                                             <option>9</option>
                                             <option>10</option>
-                                            <option>11</option>
-                                            <option>12</option>
                                         </select>
                                     </div>
                                     
                                 </div>                                    
                                 <hr />
-                                <button class='btn btn-primary mt-3' style='width: 7rem;'>Salvar</button>
+                                <% if('user' in locals ){ %>
+                                <h6 class='userCreateComanda'><small> Comanda aberta por:</small>&nbsp; <%= locals.user.username %> </h6>
+                                <% } %> 
+                                <div class='btnNova'>
+                                <button class='btn btn-primary mr-2 mt-3' style='width: 7rem;'>Salvar</button>
+                                <a href='/'> <button type='button' class='btn btn-secondary  mt-3' style='width: 7rem;'>Cancelar</button></a>
+                                </div>
                             </div> 
                         </form>
+                     </div>   
                  </div>
             </div>    
         </div>
          <script type="text/javascript">
-          $("#valueJobTotal , #valueJobInit").mask("099.00");
+          $("#valueJobTotal , #valueJobInit").mask("099.00", {reverse: true});
         $(document).ready(function(){
             
                 $("#valueJobTotal, #valueJobInit").maskMoney({ decimal: '.', thousands: '', precision: 2 });
         })
         </script>
+        
+         
         <script>
-        if (window.jQuery == undefined)
-    alert("Sem jQuery!");
+            
+        var select = document.getElementById('status');
+            select.onchange = function () {
+                select.className = this.options[this.selectedIndex].className;
+                }
+                .redText {
+                    background-color:#0F0;
+                  /*   backgroundColor:#ff6b6b; */
+                }
+                .greenText {
+                    background-color:#0F0;
+                    /* backgroundColor:#1dd1a1; */
+                }
+                .yellowText {
+                    background-color:#0F0;
+                    /*  
+                    backgroundColor:#feca57;*/
+                }
+           
+            
         </script>
+     
 
 <% include ../partials/footer %>

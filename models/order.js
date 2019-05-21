@@ -37,6 +37,7 @@ const OrderSchema = mongoose.Schema({
     },
     delivery: {
         type: Date,
+        default: Date.now()
     },
     valueJobTotal: {
         type: Number,
@@ -58,7 +59,7 @@ const OrderSchema = mongoose.Schema({
         enumValue: [ 'aberta', 'executando','fechada']
     },
     comments:  {
-        type: [String]
+        type: String
     },   
 })
 OrderSchema.plugin(AutoIncrement, {id: 'order_seq', inc_field: 'number', collection_name: 'numOs'})

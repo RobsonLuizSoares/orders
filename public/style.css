@@ -1,18 +1,24 @@
 body{
     margin: 0;
     padding: 0;
-    background: #e0e0e0;
+    background: #f3f2f2;
 }
 .navega{
     min-height:60px;
     font-size: 1.2em;
     color: #fff; 
     box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.3);
+    background-color: #d63031;
+   padding-left: 55px;
        
 }
+
+/* style=" background-color: ;  */
 .navega a{
     margin-right: 1em;
     color: #fff;
+ 
+    
 }
 .navega a:hover{
     color: yellow; 
@@ -27,39 +33,7 @@ body{
     box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.3);
 }
 
-/*Small devices (landscape phones, 576px and up)*/
-@media (max-width: 576px) { 
-    .h1{
-        color: rgb(13, 214, 80);
-    }
-    .navega{
-        min-height:60px;
-        font-size: 0.9em;
-        font-family: 'Roboto', serif;
-    }
- }
 
-/* Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) { 
-    .h1{
-        color: rgb(214, 150, 13);
-    };
-    
-}
-
-/* Large devices (desktops, 992px and up)*/
-@media (min-width: 992px) { 
-    .h1{
-        color: rgb(214, 13, 197);
-    }
- }
-
-/* Extra large devices (large desktops, 1200px and up)*/
-@media (min-width: 1200px) { 
-    .h1{
-        color: rgb(37, 6, 175);
-    }
- }
 /* LOGIN */
  .box{
     width: 400px;
@@ -136,3 +110,249 @@ display: none;
 #createClientBtn {
     display: none;
 }
+/* COMANDAS*/
+.comanda{
+    margin-bottom: 50px;
+}
+.cardHeader {
+    background-color: #d63031;
+}
+.cardHeader h5 {
+    color: rgb(255, 239, 15);
+    font-size: 1.7em;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+}
+.cardBody {
+    background-color: #e8e8e8;
+}
+.cardContent {
+    background-color: #ffffff;
+}
+.payment {
+    background-color: #fcc8c89d;
+    font-weight: 500;
+    padding-left: 30%;
+}
+.namePage{
+    margin-top: 20px;
+    
+}
+.namePage h1{
+    
+    font-size: 1.5em;
+}
+.field{
+    background-color: #f7e9e99d;
+    border-radius: 3px;
+    border: 1px solid  #6b6b6b;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-left: 20px;    
+}
+.fieldNew{
+    background-color: #f7e9e99d;
+    border-radius: 3px;
+    border: 1px solid  #6b6b6b;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-left: 10px;    
+}
+.fieldDate {
+    background-color: #f7e9e99d;
+    border-radius: 3px;
+    border: 1px solid  #6b6b6b;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+.fieldCash {
+    background-color: #f7e9e99d;
+    border-radius: 3px;
+    border: 1px solid  #6b6b6b;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+.fieldBox {
+    background-color: #fa9c9cda;
+    border-radius: 3px;
+    border: 1px solid  #6b6b6b;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-left: 10px;
+}
+.fieldStatus {
+    background-color: #ff7676da;
+    border: 1px solid  #6b6b6b;
+    border-radius: 3px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+.fieldComments {
+    width: 100%;
+    border: 1px solid  #6b6b6b;
+    background-color: #f7e9e99d;
+    border-radius: 3px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    margin-right: 22px;
+    padding-left: 15px;     
+}
+.btnComanda{
+    margin: 20px 0px;
+    width: 120px;
+}
+.userCreateComanda{
+    flex-direction: row;
+    float: right;
+    font-weight: 400;
+    font-style: italic;
+    margin-right: 25px;
+}
+/*Small devices (landscape phones, 576px and up)*/
+@media (max-width: 576px) { 
+    
+    .navega{
+        min-height:50px;
+        font-size: 0.8em;
+        font-family: 'Roboto', serif;
+        
+    }
+    .namePage{
+        margin-top: 20px;
+        font-size: 2em;
+    }
+    .namePage h1{
+        
+        font-size: 1em;
+    }
+    .cardContent{
+       
+        padding: 5px 25px;
+        margin-top: 5px;
+        width: 100%;
+        background-color: rgb(252, 221, 221);
+    }
+    .cardHeader h5 {
+        color: rgb(255, 239, 15);
+        font-size: 1.4em;
+        text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+    }
+    .field{
+        border: 0.5px solid  #6b6b6b;
+        background-color: #ffffff;
+        margin-left:5;
+        margin-top: 5px;
+        margin-right: 5px;
+        font-size: 0.9em;
+    }
+    .fieldNew{
+        border: 0.5px solid  #6b6b6b;
+        background-color: #ffffff;
+        margin-left:0;
+        margin-top: 5px;
+        margin-right: 5px;
+        font-size: 0.9em;
+    }
+    .fieldBox{
+        background-color: #ffffff;
+        margin-left:18px;
+        margin-top: 5px;
+        font-size: 0.9em;
+    }
+    .fieldStatus{
+        margin-left: 32px;
+        border: 1px solid  #6b6b6b;
+        background-color: #e7e7e7be;
+        border-radius: 3px;
+        padding-top: 10px;
+        padding-left: 20%;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+        margin-top: 10px;
+        
+    }
+    .fieldDate{
+        border: 1px solid  #6b6b6b;
+        background-color: #ffffff;
+        border-radius: 3px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+        letter-spacing: 0.6px;
+        font-size: 0.9em;
+    }
+    .fieldCash {
+        background-color: #ffffff;
+        border-radius: 3px;
+        border: 1px solid  #6b6b6b;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+        font-size: 0.9em;
+    }
+    .fieldComments{
+        width: 100%;
+        border: 1px solid  #6b6b6b;
+        background-color: #e7e7e7be;
+        border-radius: 3px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-left: 18px;
+        margin-bottom: 5px;
+        margin-right: 10px;
+        padding-left: 10px;  
+    }
+    .btns{
+        width: 100%;
+        border: 1px solid  #6b6b6b;
+        
+        border-radius: 3px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        margin-bottom: 15px;
+         padding-left: 15%;
+    }
+    .btnComanda{
+        width: 100px;  
+    }
+    .btnNova{
+        padding-left: 15%;
+    }
+    
+    
+ }
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) { 
+    .h1{
+        color: rgb(214, 150, 13);
+    };
+    
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) { 
+    .h1{
+        color: rgb(214, 13, 197);
+    }
+ }
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) { 
+    .namePage{
+        margin-top: 20px;
+        font-size: 2em;
+    }
+    .namePage h1{
+        
+        font-size: 1.5em;
+    }
+ }

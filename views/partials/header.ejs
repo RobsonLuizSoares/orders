@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<nav class="navbar navega navbar-expand-lg " style=" background-color: #d63031; padding-left: 55px;">
+<nav class="navbar navega navbar-expand-lg " >
     <a class="navbar-brand brandNet" href="/">Net Link</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon text-white mr-3" style="font-size: 0.8em">Menu</span>
@@ -20,28 +20,20 @@
       <ul class="navbar-nav">
         
         <li class="nav-item">
-          <a class="nav-link" href="/os/nova">Comandas</a>
+          <a class="nav-link" href="/os/nova"> <button class='btn btn-sm btn-outline-light'> Abrir Comandas</button></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/admin">Admin</a>
+          <a class="nav-link" href="/os/list"><button class='btn btn-sm btn-outline-light'>Consultar Comandas</button></a>
         </li>
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Comandas
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item text-body" href="/os/nova">Abrir Nova Comanda</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item text-body" href="/os/buscar/aberta">Comandas Abertas</a>
-          <div class="dropdown-divider"></div>
-            <a class="dropdown-item text-body" href="/os/buscar/executando">Comandas Em Execução</a>
-          <div class="dropdown-divider"></div>
-            <a class="dropdown-item text-body" href="/os/buscar/fechada">Comandas Fechadas</a>
-          <div class="dropdown-divider"></div>
-            <a class="dropdown-item text-body" href="/os/list">Consulta Comandas</a> 
-          </div>
+        <li class="nav-item">
+          <a class="nav-link" href="/os/buscar/aberta"> <button class='btn btn-sm btn-outline-light'> Comandas Abertas</button></a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/os/buscar/executando"><button class='btn btn-sm btn-outline-light'>Comandas Em Execução </button></a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/os/buscar/fechada"><button class='btn btn-sm btn-outline-light'>Comandas Fechadas</button></a>
+      </li>
         <% if('user' in locals ){ %>
           <% if(locals.user.roles.length > 1) { %> 
             <li class="nav-item active">

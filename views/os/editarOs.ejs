@@ -37,8 +37,8 @@
                         <div class="col-md-3">
                             <label for="number">Cópias:</label>
                             <select  class="form-control" id='copy' name='copy'>
-                            <% services.map( service => { %>
-                                <option value="<%= service.id%>" <% if(service.id == order.copy) { %> selected ='selected' <% } %> > <%= service.name %> </option>
+                            <% copies.map( copy => { %>
+                                <option value="<%= copy.id%>" <% if(copy.id == order.copy) { %> selected ='selected' <% } %> > <%= copy.name %> </option>
                             <% }) %>
                             </select>
                         </div>
@@ -48,22 +48,38 @@
                         </div>
                         <div class="col-md-4">
                             <label for="number">Folhas:</label>
-                            <input value="<%= order.sheets %>" class='form-control' type='text' name='sheets'>    
+                            <select  class="form-control" id='copy' name='sheets'>
+                            <% sheets.map( sheet => { %>
+                                <option value="<%= sheet.id%>" <% if(sheet.id == order.sheets) { %> selected ='selected' <% } %> > <%= sheet.name %> </option>
+                            <% }) %>
+                            </select>    
                         </div>
                         <div class="col-md-3">
                             <label for="number">Tamanho:</label>
-                            <input value="<%= order.size %>" class='form-control' type='text' name='size'>
+                            <select  class="form-control" id='size' name='size'>
+                            <% sizes.map( size => { %>
+                                <option value="<%= size.id%>" <% if(size.id == order.size) { %> selected ='selected' <% } %> > <%= size.name %> </option>
+                            <% }) %>
+                            </select>
                         </div>
                     </div>
                     <hr />
                     <div class="row">
                         <div class="col-md-8">
                             <label for="number">Outros Serviços:</label>
-                            <input value="<%= order.otherServices %>" class='form-control' type='text' name='otherServices'>
+                            <select  class="form-control" id='otherServices' name='otherServices'>
+                            <% services.map( service => { %>
+                                <option value="<%= service.id%>" <% if(service.id == order.otherServices) { %> selected ='selected' <% } %> > <%= service.name %> </option>
+                            <% }) %>
+                            </select>
                         </div>
                         <div class="col-md-4">
                             <label for="number">Cor:</label>
-                            <input value="<%= order.color %>" class='form-control' type='text' name='color'>
+                            <select  class="form-control" id='color' name='color'>
+                            <% colors.map( color => { %>
+                                <option value="<%= color.id%>" <% if(color.id == order.color) { %> selected ='selected' <% } %> > <%= color.name %> </option>
+                            <% }) %>
+                            </select>
                         </div>
                     </div>
                     <hr />    
@@ -101,7 +117,11 @@
                         </div>
                         <div class="col-md-3">
                             <label for="number">Pagamento:</label>
-                            <input value="<%= order.isSold %>" class='form-control' type='text' name='isSold'>
+                            <select  class="form-control" id='isSold' name='isSold'>
+                            <% solds.map( sold => { %>
+                                <option value="<%= sold.id%>" <% if(sold.id == order.isSold) { %> selected ='selected' <% } %> > <%= sold.name %> </option>
+                            <% }) %>
+                            </select>
                         </div>
                     </div><hr />
                 <button class='btn btn-primary' style='width: 8rem;'> Salvar </button>
