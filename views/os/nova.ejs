@@ -1,10 +1,21 @@
-<% include ../partials/headerComandas %>
+<% include ../partials/header %>
+
+<script>
+    $(document).ready(function() {
+    $(window).keydown(function(event){
+        if(event.keyCode == 13) {
+        event.preventDefault();
+        return false;
+        }
+    })
+    })
+</script>
 
 <div class='container text-center namePage'>
     <h1> Abrir Nova Comanda</h1>
 </div>
 <div class='container my-3' >
-    <a href='/os/list'><button type='button' class='btn btn-primary' id='voltar' style='width: 7rem;'> Voltar </button></a>    
+    <a href='/admin'><button type='button' class='btn btn-primary' id='voltar' style='width: 7rem;'> Voltar </button></a>    
 </div>
 
 <div class='container' style="margin-bottom: 125px">
@@ -34,7 +45,7 @@
                         </div>                        
                                 <div class="row ">
                                     <div class="form-group col-md-2">
-                                        <label for="fone">Cópia:</label>
+                                        <label for="copy">Cópia:</label>
                                         <select type="text" class="form-control fieldNew" id="copy" name='copy' >
                                             <option></option>
                                             <option>Colorida Jato</option>
@@ -85,34 +96,23 @@
                           
                                 <hr/>
                                 <div class="row ">
-                                    <div class="col-md-9 text-center"> 
+                                    <div class="col-md-12 text-center"> 
                                         <label class='mb-2 ' for="comentário">Descrição do Serviço:</label>
                                         <textarea class='form-control fieldNew' name='comments' rows="2" cols=""> </textarea>
                                     </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="datenow">Data de Entrega:</label>
-                                       <input class="form-control fieldNew" type="date" id="delivery" name='delivery' >
-                                    </div>
+                                    
                                 </div>
                                 <hr />
                                 <div class="row mt-3">
-                                    <div class="form-group col-md-3 ">
-                                        <label class='mr-auto mb-2' for="status">Status</label>
-                                        <select class="form-control payment" id='status' name='status'>
-                                            <option value='aberta'>Aberta</option>
-                                            <option value='executando'>Executando</option>
-                                            <option value='fechada'>Fechada</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-2">
+                                    <div class="form-group col-md-3">
                                         <label for="client">Valor Total:</label>
-                                        <input type="text" class="form-control fieldNew" id="valueJobTotal" name='valueJobTotal'>
+                                        <input type="text" class="form-control fieldNew" id="valueJobTotal" name='valueJobTotal' placeholder='R$'>
                                     </div>
-                                    <div class="form-group col-md-2">
+                                    <div class="form-group col-md-3">
                                         <label for="dateNow">Valor Entrada:</label>
-                                        <input type="text" class="form-control fieldNew" id="valueJobInit" name='valueJobInit'>
+                                        <input type="text" class="form-control fieldNew" id="valueJobInit" name='valueJobInit' placeholder='R$'>
                                     </div>
-                                    <div class="form-group col-md-2">
+                                    <div class="form-group col-md-3">
                                         <label for="fone">Pagamento:</label>
                                             <select type="text" class="form-control fieldNew" id="isSold" name='isSold' placeholder="digite o telefone do cliente">
                                                 <option></option>
@@ -121,9 +121,9 @@
                                                 <option>Não Pago</option>
                                             </select>
                                     </div>
-                                    <div class="col-md-3  ">
+                                    <div class="col-md-3">
                                         <h5 class='ml-3'> Guichê: </h5>
-                                        <select type="text" class="form-control my-1 fieldNew" id="box" name='box' placeholder="digite o telefone do cliente">
+                                        <select type="text" class="form-control my-1 fieldNew " id="box" name='box' placeholder="digite o telefone do cliente">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -138,7 +138,39 @@
                                         </select>
                                     </div>
                                     
+                                    
                                 </div>                                    
+                                <hr />
+                                <div class='row'>
+                                    <div class="form-group col-md-3 ">
+                                        <label class='mr-auto mb-2' for="status">Status</label>
+                                        <select class="form-control payment" id='status' name='status'>
+                                            <option value='aberta'>Aberta</option>
+                                            <option value='executando'>Executando</option>
+                                            <option value='fechada'>Fechada</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="fone">Loja:</label>
+                                         <select class="form-control fieldNew" name="store">
+                                        <% stores.forEach(store => { %>
+                                        <option  value="<%= store._id %>"> <%= store.name %> </option>
+                                        <% }) %>
+                                </select>  
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="fone">Funcionária:</label>
+                                        <select class="form-control fieldNew" name="name" id='name'>
+                                        <% employees.forEach(employee => { %>
+                                        <option  value="<%= employee.name %>"> <%= employee.name %> </option>
+                                        <% }) %>
+                                </select>  
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="datenow">Data de Entrega:</label>
+                                       <input class="form-control fieldNew" type="date" id="delivery" name='delivery' >
+                                    </div>
+                                </div>
                                 <hr />
                                 <% if('user' in locals ){ %>
                                 <h6 class='userCreateComanda'><small> Comanda aberta por:</small>&nbsp; <%= locals.user.username %> </h6>
@@ -160,6 +192,8 @@
                 $("#valueJobTotal, #valueJobInit").maskMoney({ decimal: '.', thousands: '', precision: 2 });
         })
         </script>
+
+        
         
          
         <script>

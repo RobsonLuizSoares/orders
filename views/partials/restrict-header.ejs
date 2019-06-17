@@ -11,50 +11,30 @@
 </head>
 
 <body>
-<nav class="navbar navega navbar-expand-lg " style=" background-color: #d63031; padding-left: 55px;">
-    <a class="navbar-brand brandNet" href="/restrict">Net Link</a>
+
+<nav class="navbar navega navbar-expand-lg " style=" background-color: #6F1E51; padding-left: 55px;">
+    <a class="navbar-brand brandNetAdmin" href="/restrict">Net Link</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon text-white mr-3" style="font-size: 0.8em">Menu</span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        
+      <ul class="navbar-nav mx-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/restrict/novousuario">Criar Usuário</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/admin">Admin</a>
-        </li>
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Comandas
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item text-body" href="/restrict/novousuario">Criar Usuário</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item text-body" href="/os/buscar/aberta">Comandas Abertas</a>
-          <div class="dropdown-divider"></div>
-            <a class="dropdown-item text-body" href="/os/buscar/executando">Comandas Em Execução</a>
-          <div class="dropdown-divider"></div>
-            <a class="dropdown-item text-body" href="/os/buscar/fechada">Comandas Fechadas</a>
-          <div class="dropdown-divider"></div>
-            <a class="dropdown-item text-body" href="/os/list">Consulta Comandas</a> 
-          </div>
+          <a class="nav-link navItens" href='/admin'> Comandas </a>
         </li>
         <% if('user' in locals ){ %>
           <% if(locals.user.roles.length > 1) { %> 
             <li class="nav-item active">
-              <a class="nav-link" href="/restrict">Caixas <span class="sr-only">(current)</span></a>
+              <a class="nav-link navItens" href="/restrict/caixas">Caixas <span class="sr-only">(current)</span></a>
             </li>
           <% } %>
         <% } %>
       </ul>
      </div>
       <% if('user' in locals ){ %>
-        
-        <div><a href='/logout'>Sair</a> <%= locals.user.username %></div>
+        <button class='btn  btn-outline-light mr-3' disabled><%= locals.user.username %></button>
+        <div class='mr-2'><a href='/logout'><button class='btn btn-sm btn-outline-warning '>Sair</button></a></div>
       <%}else{%>
-        <div><a href='/login'> Login </a></div>
+        <div class='mr-2'><a href='/login'><button class='text-white btn btn-warning mr-1'> Login </button></a></div>
       <% } %>
-  </nav>
+  </nav> 

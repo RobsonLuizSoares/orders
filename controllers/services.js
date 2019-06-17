@@ -38,22 +38,118 @@ const solds = [
   { id: 'Não Pago', name: 'Não Pago' }
 ]
 
-const list = async ({ Order }, req, res) => {
+const list = async ({ Order, Store }, req, res) => {
+  const store = await Store.find()
   const order = await Order.find({}).sort({number: -1})
-      res.render('os/comandas', {order, labels, services, copies, sheets, sizes, colors, solds, moment })
+      res.render('os/comandas', {order, labels, services, copies, sheets, sizes, colors, solds, store, moment })
 }
+
+const newFormOs = async ({Store, Employees}, req, res) =>{
+  const employees = await Employees.find()
+  const stores = await Store.find()
+  res.render('os/nova', {stores, employees})
+}
+
 
 const createOs = async ({ Order }, req, res ) => {
   const order = new Order (req.body)
-  await order.save().then(() => {
+  await order
+    .save()
+    .then(() => {
     res.redirect('/os/list')
   }).catch((err) => {
       if(err){console.log('erro no create: ',err)}
   })     
 }
+//========================BUSCA DE COMANDAS POR LOJAS ========================================================
+const storeOsF = async ({Order, Store, Employees}, req, res) =>{
+  const employees= await Employees.find()
+  const order = await Store.findOne({name: req.params.name}).then((store) => {
+    if(Store) {
+      Order.find({store: store._id, status: { $all: 'fechada'} } ).sort({date: -1}).then((Order) => {
+        res.render('os/resultsOS', { Order, store, employees, moment })
+      }).catch(() => {
+        console.log('Erro ao listar as comandas por loja')
+      })
+    }else {
+      console.log('Não existe comanda nessa loja')
+    }
+  }).catch((err) => {
+    if(err) {
+      console.log('Deu erro ao listar comandas por loja ', err)
+    }
+  })
+}
 
-const newFormOs = (req, res) =>{
-  res.render('os/nova')
+const storeOsA = async ({Order, Store, Employees}, req, res) =>{
+  const employees= await Employees.find()
+  const order = await Store.findOne({name: req.params.name}).then((store) => {
+    if(Store) {
+      Order.find({store: store._id, status: { $all: 'aberta'} } ).sort({date: -1}).then((Order) => {
+        res.render('os/resultsOS', { Order, store, employees, moment })
+      }).catch(() => {
+        console.log('Erro ao listar as comandas por loja')
+      })
+    }else {
+      console.log('Não existe comanda nessa loja')
+    }
+  }).catch((err) => {
+    if(err) {
+      console.log('Deu erro ao listar comandas por loja ', err)
+    }
+  })
+}
+
+const storeOsE = async ({Order, Store, Employees}, req, res) =>{
+  const employees= await Employees.find()
+  const order = await Store.findOne({name: req.params.name}).then((store) => {
+    if(Store) {
+      Order.find({store: store._id, status: { $all: 'executando'} } ).sort({date: -1}).then((Order) => {
+        res.render('os/resultsOS', { Order, store, employees, moment })
+      }).catch(() => {
+        console.log('Erro ao listar as comandas por loja')
+      })
+    }else {
+      console.log('Não existe comanda nessa loja')
+    }
+  }).catch((err) => {
+    if(err) {
+      console.log('Deu erro ao listar comandas por loja ', err)
+    }
+  })
+}
+
+/* const searchOsF = async ({ Order }, req, res) => {
+  const order = await Order.find({ status: { $all: 'fechada'} })
+    res.render('os/comandas', { order, labels, services, copies, sheets, sizes, colors, solds, moment})
+} */
+
+// ===============================================================================
+/* const resultsStore =  async({Order, Store, Employees},req, res) => {
+  const order = await Order.find()
+  const store = await Store.find()
+  res.render('os/lojas', { order, store } )
+} */
+
+const resultsStore =  async({Order, Store, Employees},req, res) => {
+  const order = await Order.find()
+  const employees = await Employees.find()
+  const store = await Store.findOne({name:req.params.name}).then((store) =>{
+    if(Store) {
+      Order.find({store:store._id}).then((order) => {
+         res.render('os/lojas', { order, store, employees, moment } )
+      }).catch(() =>{
+        console.log('erro ao listar comandas por loja específica ', err)
+      })
+    }else {
+      console.log('essa comanda não existe')
+    }
+  }).catch((err) => {
+      if(err) { 
+      console.log('erro ao listar comandas por loja específica ', err)
+      }
+  })
+ 
 }
 
 const excluirOs = async ({ Order }, req, res) => {
@@ -117,21 +213,21 @@ const addComentario = async ({Order}, req, res) => {
   await Order.updateOne({ _id: req.params.id }, {$push: {comments: req.body.comentario}})
   res.redirect('/os/info/'+req.params.id)
 }
-
-const searchOsF = async ({ Order }, req, res) => {
+//********************************************************** */
+/* const searchOsF = async ({ Order }, req, res) => {
   const order = await Order.find({ status: { $all: 'fechada'} })
     res.render('os/comandas', { order, labels, services, copies, sheets, sizes, colors, solds, moment})
 }
-
-const searchOsA = async ({ Order }, req, res) => {
+//********************************************************** */
+/* const searchOsA = async ({ Order }, req, res) => {
   const order = await Order.find({ status: { $all: 'aberta'} })
     res.render('os/comandas', { order, labels, services, copies, sheets, sizes, colors, solds, moment})
 }
-
-const searchOsE = async ({ Order }, req, res) => {
+ */
+/* const searchOsE = async ({ Order }, req, res) => {
   const order = await Order.find({ status: { $all: 'executando'} })
     res.render('os/comandas', { order, labels, services, copies, sheets, sizes, colors, solds, moment})
-}
+}  */
 
 module.exports = {
     list,
@@ -142,7 +238,11 @@ module.exports = {
     editFormOs,
     info,
     addComentario,
-    searchOsF,
+    /* searchOsF,
     searchOsA,
-    searchOsE
+    searchOsE, */
+    storeOsF,
+    storeOsA,
+    storeOsE,
+    resultsStore
 }

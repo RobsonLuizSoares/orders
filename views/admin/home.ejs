@@ -1,5 +1,34 @@
-
-
 <% include ../partials/header %>
-<h1 class="h1"> Home ADMIN </h1>
-<% include ../partials/footer %>
+<body class='adminBody'>
+    <div class='container alert mt-1'>
+        <div class="my-5">
+            <h1 class="mt-4 text-center text-body"> Administração de Comandas </h1>
+        </div> 
+        <h4 class="text-center"> Selecione sua loja</h4>
+        <hr />
+        <div class='row  comandasLoja'>
+            <div class='col-md-3 text-center my-5'>
+                <a href='/os/list/Avenida' class='text-decoration-none'><h4 class=' tagsUser'>Avenida</h4></a>
+            </div>
+            <div class='col-md-3 text-center my-5'>
+                <a href='/os/list/Unespar' class='text-decoration-none'><h4 class='tagsUser'>Unespar</h4></a>
+            </div>       
+            <div class='col-md-3 text-center my-5'>
+                <a href='/os/list/São%20Cristóvão' class='text-decoration-none'><h4 class='tagsUser'>São Cristóvão</h4></a>
+            </div>
+            <div class='col-md-3 text-center my-5'>
+                <a href='/os/list/Cruz%20Machado' class='text-decoration-none'><h4 class='tagsUser'>Cruz Machado</h4></a>
+            </div>
+        </div>
+
+    <hr />
+        <div id='btnBack' class='row BtnComandasLoja'>
+            <div class='col-md-4 text-center mx-auto'>
+                <a class='text-decoration-none' href='/admin'><h4 class="tagsUp ">Voltar</h4></a>
+            </div>
+        </div>
+        
+    </div>
+</body>
+
+<% include ../partials/footer %></div>

@@ -1,16 +1,19 @@
-<div class="user-login">
     
-<% include ./partials/header %>
+<% include partials/headerUser %>
 
-
+<body class='headerUserBody'>
     <form  method="post" class="box">
         <h1>Login</h1>
-        <input type="text" name="username" placeholder="Usuário" >
+        <input type="text" id='name' name="username" placeholder="Usuário" >
         <input type="password" name="password" placeholder="Senha" >
         <button class="btnLogin" type="submit">Login </button>
-
-
     </form>
-</div>
+</body>
+    
+<script>
+    window.onload = function() {
+        document.getElementById('name').focus()
+    }
+</script>
 
 <% include ./partials/footer %>

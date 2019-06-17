@@ -28,6 +28,7 @@ const createInitialUser = async() => {
     const total = await User.countDocuments({ username: 'robi', username: 'lya' })
     if(total===0){
         const user = new User({
+            user: 'Robson Luiz',
             username: 'robi',
             password: '1234',
             roles: ['admin', 'restrict']
@@ -35,6 +36,7 @@ const createInitialUser = async() => {
         await user.save() 
 
         const user2 = new User({
+            user: 'Lya Petry',
             username: 'lya',
             password: '1234',
             roles: ['admin']
@@ -92,7 +94,12 @@ app.use('/admin', (req,res, next) => {
     }
     res.redirect('/login')
 })
-
+app.use('/os', (req,res, next) => {
+    if('user' in req.session){
+        return next()
+    }
+    res.redirect('/login')
+})
 
 
 // Routes

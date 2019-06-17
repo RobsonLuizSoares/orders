@@ -1,11 +1,20 @@
 const express = require('express')
 const router = express.Router()
 const restrictController = require('../controllers/restrict')
+const storeController = require('../controllers/stores')
+const employeesController = require('../controllers/employees')
+//const caixasController = require('../controllers/caixas')
 
 const User = require('../models/user')
+const Values = require('../models/sendValues')
+const Store =require('../models/stores')
+const Employees = require('../models/employees')
 
 const models = {
-    User
+    User,
+    Values,
+    Store,
+    Employees
 }
 
 router.use((req, res, next) => {
@@ -21,7 +30,26 @@ router.use((req, res, next) => {
 
 router.get('/', restrictController.home)
 
+router.get('/caixas', restrictController.caixas.bind(null, models))
+//router.get('/caixas/list', restrictController.listCaixas.bind(null, models))
+
+router.get('/caixas/:name', restrictController.storeCaixas.bind(null, models))
+
+router.get('/gerenciamento', restrictController.management)
+// Empregados
+router.get('/funcionarias', employeesController.home.bind(null, models))
+router.get('/funcionarias/nova', employeesController.createEmployeeForm)
+router.post('/funcionarias/nova', employeesController.createEmployee.bind(null, models))
+
+// Usuários do sistema
 router.get('/novousuario', restrictController.newUser)
 router.post('/novousuario', restrictController.createUser.bind(null, models))
+
+//Rota Acessar Lojas
+router.get('/stores', storeController.home.bind(null, models))
+//Rota Acessar Formulário Criar Loja
+router.get('/loja/nova', storeController.createStoreForm) 
+// Rota para Cadastro de Lojas
+router.post('/loja/nova', storeController.createStore.bind(null, models)) 
 
 module.exports = router

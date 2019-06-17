@@ -1,11 +1,19 @@
 const mongoose = require('mongoose')
 const AutoIncrement = require('mongoose-sequence')(mongoose)
+const Schema = mongoose.Schema
 
 
-
-const OrderSchema = mongoose.Schema({
+const OrderSchema =  new Schema({
+    name: {
+        type: String
+    },
     client: {
         type: String,
+    },
+    store: {
+        type: Schema.Types.ObjectId,
+        ref:"Store",
+        required: true,
     },
     phone:{
         type: String,
@@ -64,8 +72,11 @@ const OrderSchema = mongoose.Schema({
 })
 OrderSchema.plugin(AutoIncrement, {id: 'order_seq', inc_field: 'number', collection_name: 'numOs'})
 
+
 const Order = mongoose.model('Order', OrderSchema)
-
-
+//Resetar Sequência de Comandas
+/* Order.counterReset('order_seq', function(err) {
+    if(err) { console.log('erro ao resetar a sequencia ', err)}
+}) */
 
 module.exports = Order
