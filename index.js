@@ -49,7 +49,7 @@ const createInitialUser = async() => {
             password: '2509',
             roles: ['admin','restrict']
         })
-        await user3.save()  
+        await user3.save()   
 
         console.log('Usuário criado com sucesso')
     }else{
