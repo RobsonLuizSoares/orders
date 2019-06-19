@@ -2,31 +2,22 @@
 <div class='container'>
 <h3 class='text-center alert alert-primary my-5'> FUNCIONÁRIAS </h3>
 </div>
-
-
-
-  
-
 <div class='container my-4'>
   <div class="table-responsive">
     <table class="table table-hover">
       <thead>
-        <tr class="table-secondary">
-          <th scope="col">Funcionária</th>
-          <th scope="col">Caixas Fechados</th>
-          <th scope="col">Comandas Fechadas</th>
-          <th scope="col">Valor dos Caixas</th>
-          <th scope="col">Valor das Comandas</th>
+        <tr class="table-secondary text-center">
+          <th scope="col">Funcionárias</th>
+          <th scope="col">Caixas Fechados (?)</th>
+          <th scope="col">Comandas Fechadas (?)</th>
         </tr>
       </thead>
       <tbody>
       <% employees.forEach(employee => { %>
-        <tr class='table-info'>
+        <tr class='table-info text-center'>
           <th scope="row"><%= employee.name %></th>
-          <td>caixas fechados</td>
-          <td>comandas fechadas</td>
-          <td>@valor caixas</td>
-          <td>@valor comandas</td>
+          <td>caixas fechados (?)</td>
+          <td>comandas fechadas (?)</td>
         </tr>
       </tbody>
       <% }) %>

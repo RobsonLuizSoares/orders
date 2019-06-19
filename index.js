@@ -25,11 +25,11 @@ const mongoose = require('mongoose')
 //Create Initial User
 
 const createInitialUser = async() => {
-    const total = await User.countDocuments({ username: 'robi', username: 'lya' })
+    const total = await User.countDocuments({ username: 'robly', username: 'lya' })
     if(total===0){
         const user = new User({
             user: 'Robson Luiz',
-            username: 'robi',
+            username: 'robly',
             password: '1234',
             roles: ['admin', 'restrict']
         })

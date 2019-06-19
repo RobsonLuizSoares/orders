@@ -9,12 +9,14 @@ const User = require('../models/user')
 const Values = require('../models/sendValues')
 const Store =require('../models/stores')
 const Employees = require('../models/employees')
+const Order = require('../models/order')
 
 const models = {
     User,
     Values,
     Store,
-    Employees
+    Employees,
+    Order
 }
 
 router.use((req, res, next) => {
@@ -34,7 +36,11 @@ router.get('/caixas', restrictController.caixas.bind(null, models))
 //router.get('/caixas/list', restrictController.listCaixas.bind(null, models))
 
 router.get('/caixas/:name', restrictController.storeCaixas.bind(null, models))
-
+//////////
+router.get('/caixas/excluir/:id', restrictController.excluirCaixa.bind(null, models))
+/////////////
+router.get('/count', restrictController.countCaixasA.bind(null, models))
+///////////
 router.get('/gerenciamento', restrictController.management)
 // Empregados
 router.get('/funcionarias', employeesController.home.bind(null, models))

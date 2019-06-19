@@ -11,7 +11,7 @@ const management = (req,res) => {
 
 // USUÁRIOS
 const newUser = (req, res) => {
-    res.render('restrict/newUser')
+    res.render('restrict/users/newUser')
 }
 
 const createUser = async ({ User }, req, res ) => {
@@ -32,9 +32,10 @@ const createUser = async ({ User }, req, res ) => {
     })     
   }
 // CAIXAS
-  const caixas = async ({ Store },req, res) => {
+  const caixas = async ({ Store, Values },req, res) => {
+    const quant = await Values.count()
     const adminCaixas = await Store.find().then((store) => {
-      res.render('restrict/receiveCaixas', { store })
+      res.render('restrict/receiveCaixas', { store, quant })
     })
 }
 
@@ -76,13 +77,24 @@ const createUser = async ({ User }, req, res ) => {
     })
 }
 
+const excluirCaixa = async ({ Values }, req, res) => {
+  await Values.deleteOne({ _id: req.params.id }).then(() => {
+    res.redirect('/restrict/caixas')
+  }).catch((err) => {
+    console.log('erro ao deletar caixa, ', err)
+  })
+}
 
-
-
-
+const countCaixasA = async({ Order, Values }, req, res) => {
+  let quantCaixas = await Values.count()
+  let quantComandas = await Order.where({'status':'aberta'}).countDocuments()
+    .then((quant) => {
+    res.render('restrict/counts', { quant, quantCaixas })
+  })
+}
 
 
 
 module.exports = {
-    home, newUser, createUser, createEmployees, caixas, storeCaixas, management
+    home, newUser, createUser, createEmployees, caixas, storeCaixas, management, excluirCaixa, countCaixasA
 }

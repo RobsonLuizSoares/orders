@@ -36,7 +36,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="fone">Telefone:</label>
-                                <input type="text" class="form-control fieldNew" id="phone" name='phone' >
+                                <input type="text" class="form-control fieldNew text-center" id="phone" name='phone' >
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="emailClient">E-mail / Rede Social:</label>
@@ -177,7 +177,7 @@
                                 <% } %> 
                                 <div class='btnNova'>
                                 <button class='btn btn-primary mr-2 mt-3' style='width: 7rem;'>Salvar</button>
-                                <a href='/'> <button type='button' class='btn btn-secondary  mt-3' style='width: 7rem;'>Cancelar</button></a>
+                                <a href='/admin'> <button type='button' class='btn btn-secondary  mt-3' style='width: 7rem;'>Cancelar</button></a>
                                 </div>
                             </div> 
                         </form>
@@ -187,37 +187,9 @@
         </div>
          <script type="text/javascript">
           $("#valueJobTotal , #valueJobInit").mask("099.00", {reverse: true});
-        $(document).ready(function(){
-            
-                $("#valueJobTotal, #valueJobInit").maskMoney({ decimal: '.', thousands: '', precision: 2 });
-        })
+            $("#phone").mask("(99) 99999-9999");
+
         </script>
 
-        
-        
-         
-        <script>
-            
-        var select = document.getElementById('status');
-            select.onchange = function () {
-                select.className = this.options[this.selectedIndex].className;
-                }
-                .redText {
-                    background-color:#0F0;
-                  /*   backgroundColor:#ff6b6b; */
-                }
-                .greenText {
-                    background-color:#0F0;
-                    /* backgroundColor:#1dd1a1; */
-                }
-                .yellowText {
-                    background-color:#0F0;
-                    /*  
-                    backgroundColor:#feca57;*/
-                }
-           
-            
-        </script>
-     
 
 <% include ../partials/footer %>

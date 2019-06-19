@@ -122,15 +122,42 @@
                                 </tr>
                                 
                             </tbody>
-                            
                         </table>
-            
+
+                        <div class="modal fade" id="testeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content modalBox ">
+                                <div class="modal-header ">
+                                    <h6 class="text-center mx-auto">Essa ação não poderá ser desfeita</h6>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body text-body">
+                                    <h5 class="modal-title mx-auto text-center" id="exampleModalLabel"> Quer mesmo excluir o Caixa ?</h5>
+                                   
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" onclick="$('#confirmBtn').trigger('click')" class="btn btn-primary btn-sm">Confirmar</button>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                         <div class="row"> 
+                    <form action="/restrict/caixas/excluir/<%=info._id%>">
+                        <a href='/restrict/caixas/excluir/<%=info._id%>'></a>
+                        <input type="hidden" name="id" value="" />
+                        <button id="confirmBtn"> </button>
+                    </form>
+                </div>
+        
+
+           
                 <div class="row"> 
-                        <a href= "edit/<%= info._id %>"><button class="btn btn-sm mx-2 btn-warning"> Editar</button></a>
-                       <form action="/admin/caixas/excluir" method="POST">
-                           <input type="hidden" name="id" value="<%= info._id %>" />
-                           <button class="btn btn-sm btn-danger"> Excluir</button>
-                       </form>
+                        <a href= "edit/<%= info._id %>"><button class="btn disabled btn-sm mx-2 btn-warning"> Editar</button></a>
+                         <button type="button" data-toggle='modal' data-target='#testeModal' class="btn btnComanda btn-secondary btn-sm"> Excluir</button>
+                   
                 </div>
                 
             </div>
@@ -141,3 +168,4 @@
 </div>
 
 <% include ../../partials/footer %>
+

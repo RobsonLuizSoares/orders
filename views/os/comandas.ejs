@@ -92,7 +92,7 @@
                     </div>
                     <% if(os.delivery) { %> 
                     <div class="col-md-3 fieldDate">
-                        <span class="font-weight-normal " >Fechada em:&nbsp; <%= moment(os.delivery).add(1,'days').format("DD [/] MM [/] YYYY") %></span>
+                        <span class="font-weight-normal " >Prometido para:&nbsp; <%= moment(os.delivery).add(1,'days').format("DD [/] MM [/] YYYY") %></span>
                     </div> 
                     <% } %>
                     
@@ -121,7 +121,7 @@
                 
                  <div class="modal fade" id="testeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
-                    <div class="modal-content">
+                    <div class="modal-content modalBox">
                         <div class="modal-header">
                             <h6 class="text-center mx-auto">Essa ação não poderá ser desfeita</h6>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
