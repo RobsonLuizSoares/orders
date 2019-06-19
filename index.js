@@ -41,7 +41,15 @@ const createInitialUser = async() => {
             password: '1234',
             roles: ['admin']
         })
-        await user2.save() 
+        await user2.save()
+
+        const user3 = new User({
+            user: 'Chefe Lya',
+            username: 'chefe',
+            password: '2509',
+            roles: ['admin','restrict']
+        })
+        await user3.save()  
 
         console.log('Usuário criado com sucesso')
     }else{
