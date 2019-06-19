@@ -12,10 +12,10 @@ const auth = async({ User }, req, res) => {
         req.session.user = user
         res.redirect('/admin')
     }else{
-        res.redirect('/login')
+        res.redirect('/')
     }
     }else{
-        res.redirect('/login')
+        res.redirect('/')
     }
 }
 

@@ -38,11 +38,31 @@ const solds = [
   { id: 'Não Pago', name: 'Não Pago' }
 ]
 
+
 const list = async ({ Order, Store }, req, res) => {
-  const store = await Store.find()
+  const store = await Store.find({})
   const order = await Order.find({}).sort({number: -1})
-      res.render('os/comandas', {order, labels, services, copies, sheets, sizes, colors, solds, store, moment })
+      res.render('os/comandas', {order, labels, services, copies, sheets, sizes, colors, solds, store, moment })    
 }
+/* const list = async ({ Order, Store, Employees }, req, res) => {
+  const employees = await Employees.find()
+  const order = await Store.find().then((store) => {
+    if(Store) {
+      Order.find({store: store._id}).then((Order) => {
+        res.render('os/comandas', { Order, store, employees, moment } )
+      }).catch(() => {
+        console.log('Erro ao listar todas as Comandas')
+      })
+    }else {
+      console.log('Erro ao listar comandas em geral')
+    }
+  }).catch((err) => {
+    if(err) {
+      console.log('erro ao listar ', err)
+    }
+  })
+      
+} */
 
 const newFormOs = async ({Store, Employees}, req, res) =>{
   const employees = await Employees.find()

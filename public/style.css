@@ -251,11 +251,13 @@ body.adminBody #btnBack{
     width: 400px;
     padding: 40px;
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #191919;
+    background: linear-gradient(180deg, #6F1E51 200px, rgb(101, 4, 158) 350px);
+    border-radius: 5px;
     text-align: center;
+    box-shadow: 2px 2px #6e5c804f; 
     
 }
 .box h1 {
@@ -272,11 +274,12 @@ body.adminBody #btnBack{
     margin: 20px auto;
     text-align: center;
     border: 2px solid #3498db;
-    width: 170px;
+    width: 210px;
     outline: none;
-    border-radius: 25px;
+    border-radius: 8px;
     transition: 0.25s;
     color: white;
+    font-size: 1.2em;
     font-weight: 500;
 }
 .box input[type = 'password'] {
@@ -287,29 +290,31 @@ body.adminBody #btnBack{
     margin: 20px auto;
     text-align: center;
     border: 2px solid #3498db;
-    width: 170px;
+    width: 210px;
     outline: none;
-    border-radius: 18px;
+    border-radius: 8px;
     transition: 0.25s;
     color: white;
+    font-size: 1.2em;
     font-weight: 500;
 }
 .box input[type = 'text']:focus, .box input[type = 'password']:focus {
-width: 190px;
+width: 240px;
 border-color: #f73b23;
 }
 .btnLogin {
     border: 0;
     background: none;
     display: block;
-    margin: 20px auto;
+    margin: auto; 
+    /* margin: 10px auto; */
     text-align: center;
-    border: 2px solid #2ecc71;
+    border: 1.5px solid #ffffff;
     padding:  14px 80 px;
     outline: none;
     color: white;
     width: 100px;
-    border-radius: 18px;
+    border-radius: 4px;
     transition: 0.25s;
     cursor: pointer;
 }

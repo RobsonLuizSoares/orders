@@ -5,7 +5,7 @@
 </div>
 <div class='container text-center my-4'>
     <a href='/os/nova'><button type='button' class='btn btn-outline-primary btn-sm mr-3' style='width: 12rem;'> Cadastrar Nova Comanda</button></a>
-    <a href='/admin'><button type='button' class='btn btn-outline-primary btn-sm ' style='width: 12rem;'> Voltar</button></a>
+    <a href='javascript:history.back()'><button type='button' class='btn btn-outline-primary btn-sm ' style='width: 12rem;'> Voltar</button></a>
 </div>
 <% if(Order.length == 0) { %>
     <% include ../partials/errorMsg %>
@@ -105,9 +105,38 @@
                         <span class="font-weight-normal ">Status:&nbsp;&nbsp;<strong> <%= os.status %></strong></span>
                     </div>
                 </div>
+
+                <div class="modal fade" id="testeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content box">
+                        <div class="modal-header">
+                            <h6 class="text-center mx-auto">Essa ação não poderá ser desfeita</h6>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body text-body">
+                            <h5 class="modal-title mx-auto text-center" id="exampleModalLabel"> Quer mesmo excluir a Comanda ?</h5>
+                           
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancelar</button>
+                            <button type="button" onclick="$('#confirmBtn').trigger('click')" class="btn btn-primary btn-sm">Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="row"> 
+                    <form action="/os/excluir/<%=os._id%>">
+                        <a href='/os/excluir/<%=os._id%>'></a>
+                        <input type="hidden" name="number" value="" />
+                        <button id="confirmBtn"> </button>
+                    </form>
+                </div>
+
                 <div class= 'btns mx-auto'> 
                     <a href='/os/editar/<%= os._id %>'><button type="button" class="btn btnComanda btn-primary btn-sm mr-2">Editar</button></a>
-                    <a href='/os/excluir/<%= os._id %>'><button type="button" class="btn btnComanda btn-secondary btn-sm "> Excluir</button></a>
+                    <button type="button" data-toggle='modal' data-target='#testeModal' class="btn btnComanda btn-secondary btn-sm"> Excluir</button>
                 </div>
             </div>
             </div>            
