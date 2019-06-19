@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="/style.css" >
+    <link rel="shortcut icon" href="/img/favicon.ico"  type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
@@ -23,7 +24,7 @@
             event.preventDefault();
             return false;
           }
-        })
+        }) 
       })
     </script>   
     <title>Gerenciamento Net Link</title>
@@ -56,7 +57,7 @@
       </ul>
      </div>
       <% if('user' in locals ){ %>
-        <button class='btn  btn-outline-light mr-3' disabled><%= locals.user.username %></button>
+        <h6 class='welcomeUser'> Olá, <%= locals.user.user %> ! </h6>
         <div class='mr-2'><a href='/logout'><button class='btn btn-sm btn-outline-warning mr-2'>Sair</button></a></div>
       <%}else{%>
         <div class='mr-2'><a href='/login'><button class='text-white btn btn-warning mr-2'> Login </button></a></div>

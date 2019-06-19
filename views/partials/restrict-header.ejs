@@ -32,7 +32,7 @@
       </ul>
      </div>
       <% if('user' in locals ){ %>
-        <button class='btn  btn-outline-light mr-3' disabled><%= locals.user.username %></button>
+        <h6 class='welcomeUser'> Olá, <%= locals.user.user %> ! </h6>
         <div class='mr-2'><a href='/logout'><button class='btn btn-sm btn-outline-warning '>Sair</button></a></div>
       <%}else{%>
         <div class='mr-2'><a href='/login'><button class='text-white btn btn-warning mr-1'> Login </button></a></div>
