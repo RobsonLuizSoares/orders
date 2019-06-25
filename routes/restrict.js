@@ -50,6 +50,7 @@ router.post('/funcionarias/nova', employeesController.createEmployee.bind(null, 
 // Usuários do sistema
 router.get('/novousuario', restrictController.newUser)
 router.post('/novousuario', restrictController.createUser.bind(null, models))
+router.get('/users', restrictController.users.bind(null, models))
 
 //Rota Acessar Lojas
 router.get('/stores', storeController.home.bind(null, models))

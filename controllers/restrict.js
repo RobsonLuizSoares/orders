@@ -22,6 +22,11 @@ const createUser = async ({ User }, req, res ) => {
         if(err){console.log('erro no create: ',err)}
     })     
   }
+
+const users = async ({User}, req, res) => {
+  const users = await User.find()
+  res.render('restrict/users/users', { users})
+}
   // FUNCIONÁRIAS
   const createEmployees = async ({ Employees }, req, res ) => {
     const employee = new Employees (req.body)
@@ -33,9 +38,9 @@ const createUser = async ({ User }, req, res ) => {
   }
 // CAIXAS
   const caixas = async ({ Store, Values },req, res) => {
-    const quant = await Values.count()
+    const quantCaixas = await Values.count()
     const adminCaixas = await Store.find().then((store) => {
-      res.render('restrict/receiveCaixas', { store, quant })
+      res.render('restrict/receiveCaixas', { store, quantCaixas })
     })
 }
 
@@ -87,7 +92,7 @@ const excluirCaixa = async ({ Values }, req, res) => {
 
 const countCaixasA = async({ Order, Values }, req, res) => {
   let quantCaixas = await Values.count()
-  let quantComandas = await Order.where({'status':'aberta'}).countDocuments()
+  let quantComandas = await Order.where({'status':{$ne:'fechada'}}).countDocuments()
     .then((quant) => {
     res.render('restrict/counts', { quant, quantCaixas })
   })
@@ -96,5 +101,5 @@ const countCaixasA = async({ Order, Values }, req, res) => {
 
 
 module.exports = {
-    home, newUser, createUser, createEmployees, caixas, storeCaixas, management, excluirCaixa, countCaixasA
+    home, newUser, createUser, users, createEmployees, caixas, storeCaixas, management, excluirCaixa, countCaixasA
 }
