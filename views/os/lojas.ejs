@@ -2,10 +2,11 @@
 <% include ../partials/header %>
 <div class='container alert mt-1'>
     <div class="my-5">
-        <h1 class="mt-4 text-center text-body"> Administração de Comandas </h1>
+        <h1 class="mt-4 text-center text-body"> Administração de Comandas - Net Link <%= store.name %></h1>
     </div> 
-    <h4 class="text-center">Comandas da loja Net Link <%= store.name %></h4>
+    <h4 class="text-center">Consulte as comandas pelo status</h4>
     <hr />
+    
     <div class='row  comandasLoja'>
         <div class='col-md-4 text-center my-5'>
             <a href='/os/buscar/aberta/<%=store.name %>' class='text-decoration-none'><h4 class=' tagsUser'>Comandas Abertas</h4></a>

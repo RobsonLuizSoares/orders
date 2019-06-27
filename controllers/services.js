@@ -76,7 +76,15 @@ const createOs = async ({ Order }, req, res ) => {
   await order
     .save()
     .then(() => {
-    res.redirect('/os/list')
+      if(req.body.store === '5d0b1c49fd60670017b2d3fc') {
+        res.redirect('/os/list/Unespar')
+      }else if(req.body.store === '5d0b1c23fd60670017b2d3fb') {
+        res.redirect('/os/list/Avenida')
+      }else if(req.body.store === '5d0b1c72fd60670017b2d3fd') {
+        res.redirect('/os/list/São%20Cristóvão')
+      }else if(req.body.store === '5d0b1c87fd60670017b2d3fe') {
+        res.redirect('/os/list/Cruz%20Machado')
+      }
   }).catch((err) => {
       if(err){console.log('erro no create: ',err)}
   })     
