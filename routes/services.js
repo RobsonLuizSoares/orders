@@ -31,7 +31,6 @@ router.post('/info/:id', servicesController.addComentario.bind(null, models))
 /* router.get('/buscar/fechada', servicesController.searchOsF.bind(null, models))
 router.get('/buscar/aberta', servicesController.searchOsA.bind(null, models))
 router.get('/buscar/executando', servicesController.searchOsE.bind(null, models)) */
-
 router.get('/list/:name', servicesController.resultsStore.bind(null, models))
 
 router.get('/buscar/fechada/:name', servicesController.storeOsF.bind(null, models))
