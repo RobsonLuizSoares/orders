@@ -160,13 +160,23 @@ const storeOsE = async ({Order, Store, Employees}, req, res) =>{
 } */
 
 const resultsStore =  async({Order, Store, Employees},req, res) => {
+  const loja = await Store.findOne({name: req.params.name})
+ 
+ let numberOrderOpen = await Order.countDocuments({store:loja._id , status: { $all: 'aberta'}})
+ const numberOrderExec = await Order.countDocuments({ store:loja._id , status: { $all: 'executando'}})
+
   const order = await Order.find()
+
   const employees = await Employees.find()
-  const store = await Store.findOne({name:req.params.name}).then((store) =>{
-    if(Store) {
-      Order.find({store:store._id}).then((order) => {
-         res.render('os/lojas', { order, store, employees, moment } )
-      }).catch(() =>{
+  
+  const store = await Store.findOne({name:req.params.name})
+    .then((store) =>{
+      if(Store) {
+        Order.find({store:store._id}).then((order) => {
+  
+         res.render('os/lojas', { order, store, employees, moment, numberOrderOpen, numberOrderExec } )
+
+      }).catch((err) =>{
         console.log('erro ao listar comandas por loja específica ', err)
       })
     }else {
@@ -176,8 +186,7 @@ const resultsStore =  async({Order, Store, Employees},req, res) => {
       if(err) { 
       console.log('erro ao listar comandas por loja específica ', err)
       }
-  })
- 
+  }) 
 }
 
 const excluirOs = async ({ Order }, req, res) => {
