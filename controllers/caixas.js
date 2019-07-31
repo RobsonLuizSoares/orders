@@ -1,9 +1,6 @@
 const home = (req, res) => {
   res.render('admin/home')
 }
-const newCaixas = (req, res) => {
-  res.render('admin/sendCaixas')
-}
 
 const createCaixa = async ({Store, Employees},req, res) => {
   const employees = await Employees.find() 
@@ -27,5 +24,5 @@ const sendCaixa = async ({ Values }, req, res) => {
 
 
 module.exports = {
-  home , createCaixa, sendCaixa, newCaixas
+  home , createCaixa, sendCaixa
 }
