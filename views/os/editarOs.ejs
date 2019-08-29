@@ -9,10 +9,29 @@
             <div class="card mx-auto" style="max-width: 55rem;">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col-md-8 my-auto text-center ">
+                        <div class="col-md-4 my-auto text-center ">
                             <span class="font-weight-bold" value="<%= order.client %>" style="font-size: 1.4em; " >Comanda n.: <%= order.number %></span> 
                         </div>
-                        <div class="form-group my-auto col-md-4">
+                        <div class="col-md-4 my-auto text-center">
+                            <input class="font-weight-normal invisible" value="<%= order.store %>" style="font-size: 1em; " name='store' 
+                            
+                            <%  if(order.store == '5d0b1c87fd60670017b2d3fe') { %>
+                                
+                                    Cruz Machado
+                                <% } %> 
+                                <%  if(order.store == '5d0b1c49fd60670017b2d3fc') { %>   
+                                    Unespar
+                                <% } %> 
+                                <%  if(order.store == '5d0b1c72fd60670017b2d3fd') { %>   
+                                     São Cristóvão
+                                <% } %> 
+                                <%  if(order.store == '5d0b1c23fd60670017b2d3fb') { %>   
+                                    Avenida
+                                <% } %> 
+
+                             />
+                        </div>
+                            <div class="form-group my-auto col-md-4">
                             <select  class="form-control" id='status' name='status'>
                             <% labels.forEach( label => { %>
                                 <option value="<%= label.id%>"  <% if(label.id == order.status) { %> selected ='selected' <% } %> > <%= label.name %> </option>
@@ -87,7 +106,7 @@
                         <h6 class="mx-auto">Descrição do Serviço:</h6>        
                     </div>           
                     <div class="row my-2 form-group">
-                        <textarea class="form-control" value='<%= order.comments %>' name="comments" rows="2" >
+                        <textarea class="form-control" value='<%= order.comments %>' id='comments' name="comments" rows="4" >
                                 <%= order.comments %>
                         </textarea>
                     </div>
