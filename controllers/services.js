@@ -94,7 +94,7 @@ const storeOsF = async ({ Order, Store, Employees }, req, res) => {
   const employees = await Employees.find()
   const order = await Store.findOne({ name: req.params.name }).then((store) => {
     if (Store) {
-      Order.find({ store: store._id, status: { $all: 'fechada' } }).sort({ register: 1 }).then((Order) => {
+      Order.find({ store: store._id, status: { $all: 'fechada' } }).sort({ register: -1 }).then((Order) => {
         res.render('os/resultsOS', { Order, store, employees, moment })
       }).catch(() => {
         console.log('Erro ao listar as comandas por loja')
